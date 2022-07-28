@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    &:active{
+        color: #000;
+    }
+}
+
+
+.navbar {
+    background-color: gold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logotipo {
+        width: 5rem;
+    }
+    a{
+        padding: .5rem;
+        font-size: 1.1rem;
+    }
+}

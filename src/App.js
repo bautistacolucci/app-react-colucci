@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     <Navbar />
-      <ItemListContainer greeting={"texto provisorio"} />
+      <ItemListContainer greeting={"A continuacion se vera el contador provisorio"} />
     </>
   )
 }

@@ -17,9 +17,9 @@ function ItemCount({stock, initial, onAdd}) {
     return(
         <div>
             <p>Pollera ANIMAL PRINT: {contador} </p>
-            <button disabled={contador>=stock} onClick={sumar}>Summar</button>
+            <button onClick={sumar} disabled={contador>=stock}>Sumar</button>
             <button onClick={agregarAlCarrito}>Agregar al carrito</button>
-            <button onClick={restar}>Restar</button>
+            <button onClick={restar} disabled={contador<=0}>Restar</button>
         </div>
     )
 }

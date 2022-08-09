@@ -13,7 +13,7 @@ a {
 
 
 .navbar {
-    background-color: gold;
+    background-color: lightblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,5 +24,23 @@ a {
     a{
         padding: .5rem;
         font-size: 1.1rem;
+    }
+}
+
+.ItemListContainer {
+    margin: 2rem 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    padding: 1rem;
+    margin: 2rem;
+    border: 1px solid black;
+    display: block;
+
+    img{
+        width: 20vw;
     }
 }

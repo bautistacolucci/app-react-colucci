@@ -1,11 +1,30 @@
-import ItemCount from "./ItemCount"
+import ItemList from './ItemList'
+import { useEffect, useState } from "react"
+import { products } from "../assets/products"
+
 
 function ItemListContainer({greeting}) {
- 
+    const [listProducts, setListProdructs] = useState([])
+
+    const customPromise = (products) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                resolve(products)
+            }, 2000)
+        });}
+
+    useEffect (() => (
+        customPromise(products)
+        .then(data => setListProdructs(data))
+    ), [])
+
+    
+
     return (
         <>
-        <p>{greeting}</p>
-        <ItemCount stock={9} initial={1}></ItemCount>
+        <section className='ItemListContainer'>
+            <ItemList listProducts={listProducts}/>
+        </section>
         </>
     )
 }

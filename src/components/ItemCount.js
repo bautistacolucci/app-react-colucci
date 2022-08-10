@@ -1,6 +1,6 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect} from 'react'
 
-function ItemCount({stock, initial, onAdd}) {
+export const ItemCount = ({stock, initial, onAdd}) => {
     const [contador, setContador] = useState(initial)
     const [confirmed, setConfirmed] = useState(false)
 
@@ -20,11 +20,11 @@ function ItemCount({stock, initial, onAdd}) {
 
     return(
         <div>
-            <p>{contador}</p>
+            <p>Cantidad: {contador}</p>
             <button onClick={sumar} disabled={contador>=stock}>Sumar</button>
             <button onClick={agregarAlCarrito}>Agregar al carrito</button>
             <button onClick={restar} disabled={contador<=0}>Restar</button>
-        </div>
+        </div> 
     )
 }
 

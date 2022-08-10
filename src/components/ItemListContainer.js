@@ -1,9 +1,8 @@
 import ItemList from './ItemList'
-import { useEffect, useState } from "react"
-import { products } from "../assets/products"
+import { useEffect, useState } from 'react'
+import { products } from '../assets/products'
 
-
-function ItemListContainer({greeting}) {
+const ItemListContainer = ({greeting}) => {
     const [listProducts, setListProdructs] = useState([])
 
     const customPromise = (products) => {
@@ -17,8 +16,6 @@ function ItemListContainer({greeting}) {
         customPromise(products)
         .then(data => setListProdructs(data))
     ), [])
-
-    
 
     return (
         <>

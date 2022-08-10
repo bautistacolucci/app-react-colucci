@@ -1,5 +1,4 @@
-import ItemCount from "./ItemCount"
-
+import ItemCount from './ItemCount'
 
 const Item = ({product}) => {
 
@@ -9,10 +8,7 @@ const Item = ({product}) => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>${product.price}</p>
-            <p>
-                Cantindad:
-                <ItemCount stock={product.stock} initial={1} />
-            </p>
+            <ItemCount stock={product.stock} initial={1} />
             <a href="...">Detalles</a>
         </div>
         </>

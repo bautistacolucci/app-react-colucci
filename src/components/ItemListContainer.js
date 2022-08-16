@@ -1,30 +1,33 @@
 import ItemList from './ItemList'
+import customPromise from './customPromise'
 import { useEffect, useState } from 'react'
 import { products } from '../assets/products'
+import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const [listProducts, setListProdructs] = useState([])
     const [loading, setLoading] = useState(false)
+    const {category} = useParams()
 
-    const customPromise = (products) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                resolve(products)
-            }, 2000)
-        });}
-
-    useEffect (() => (
+    useEffect (() => {
+        setLoading(false)
         customPromise(products)
-        .then(data => {
-            setLoading(true)
-            setListProdructs(data)})
-    ), [])
+        .then(res => {
+            if (category){
+                setLoading(true)
+                setListProdructs(res.filter(prod => prod.category === category))
+            } else {
+                setLoading(true)
+                setListProdructs(res)
+            }
+            })
+    }, [category])
 
     return (
         <>
         <section className='ItemListContainer'>
-            {!loading && <CircularProgress  />}
+            {!loading && <CircularProgress />}
             {loading && <ItemList listProducts={listProducts}/>}
         </section>
         </>

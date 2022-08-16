@@ -1,26 +1,23 @@
 import ItemDetail from './ItemDetail'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import customPromise from './customPromise'
+import { useEffect, useState } from 'react'
 import { products } from '../assets/products'
+import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 
 
 const ItemDetailContainer = () => {
     const [listProduct, setListProdruct] = useState({})
     const [loading, setLoading] = useState(false)
+    const {id} = useParams()
 
-    const customPromise = (products) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                resolve(products)
-            }, 2000)
-        });}
-
-    useEffect (() => (
+    useEffect (() => {
         customPromise(products)
         .then(res => {
             setLoading(true)
-            setListProdruct(res.find(item => item.id === 1))})
-    ), [])
+            setListProdruct(res.find(item => item.id === parseInt(id)))}
+            )
+        }, [id])
 
     return(
         <>

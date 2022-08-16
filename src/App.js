@@ -1,14 +1,13 @@
 import Navbar from './components/Navbar'
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer  from './components/ItemDetailContainter';
+import Main from './components/Main'
+import { BrowserRouter } from 'react-router-dom'
 
-function App() {
+const App = () => {
   return (
-    <>
-    <Navbar />
-    <ItemListContainer greeting={""} />
-    <ItemDetailContainer />
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Main />
+    </BrowserRouter>
   )
 }
 

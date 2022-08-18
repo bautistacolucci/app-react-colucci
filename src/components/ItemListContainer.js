@@ -11,7 +11,7 @@ const ItemListContainer = () => {
     const {category} = useParams()
 
     useEffect (() => {
-        setLoading(false)
+        setLoading(false);
         customPromise(products)
         .then(res => {
             if (category){

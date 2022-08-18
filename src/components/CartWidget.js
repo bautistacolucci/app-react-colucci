@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function CartWidget() {
+const CartWidget = () => {
     return (
         <Link to='/cart'>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
@@ -9,7 +9,5 @@ function CartWidget() {
         </Link>
     )
 }
-
-
 
 export default CartWidget

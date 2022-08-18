@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
     useEffect (() => {
         customPromise(products)
         .then(res => {
-            setLoading(true)
+            setLoading(true);
             setListProdruct(res.find(item => item.id === parseInt(id)))}
             )
         }, [id])

@@ -4,6 +4,14 @@ import { useEffect, useState } from 'react'
 import { products } from '../assets/products'
 import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
+import { db } from "../firebase";
+import { collection } from "firebase/firestore";
+import { getDoc, getDocs } from "firebase/firestore";
+
+const productsCollection = collection(db, "productos")
+//1 me traigo la referencia de la db
+//2 me traigo una referencia de la colleccion
+//3 teniendo la colleccion, me traigo los metodos de consulta
 
 const ItemListContainer = () => {
     const [listProducts, setListProdructs] = useState([])

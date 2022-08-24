@@ -32,7 +32,7 @@ export const CartContextProvider = ({children}) => {
   const cleanCart = () => setCartList([]);
 
   const totalPrice = () => {
-    return cartList.reduce((acc, product) => acc += (product.price * product.quantity, 0))
+    return cartList.reduce((acc, product) => acc += product.price * product.quantity, 0)
   }
   const totalQuatity = () => {
     return cartList.reduce((acc, product) => acc += product.quantity, 0)

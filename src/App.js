@@ -1,13 +1,16 @@
 import Navbar from './components/Navbar'
 import Main from './components/Main'
 import { BrowserRouter } from 'react-router-dom'
+import CartContextProvider from "./context/CartContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Main />
-    </BrowserRouter>
+    <CartContextProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Main />
+      </BrowserRouter>
+    </CartContextProvider>
   )
 }
 

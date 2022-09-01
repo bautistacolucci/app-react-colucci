@@ -1,9 +1,11 @@
 import ItemDetail from './ItemDetail'
-import customPromise from './customPromise'
 import { useEffect, useState } from 'react'
-import { products } from '../assets/products'
 import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
+import { db } from "../firebase";
+import { collection } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
+
 
 
 const ItemDetailContainer = () => {
@@ -12,11 +14,20 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
 
     useEffect (() => {
-        customPromise(products)
-        .then(res => {
+        const productsCollection = collection(db, "products")
+        const consulta = getDocs(productsCollection)
+        
+        consulta
+        .then(snapshot=>{
+            const product = snapshot.docs.map(doc=>{
+                return{
+                    ...doc.data(),
+                    id: doc.id
+                }
+            }) 
             setLoading(true);
-            setListProdruct(res.find(item => item.id === parseInt(id)))}
-            )
+            setListProdruct(product.find(item => item.id === id))
+        })
         }, [id])
 
     return(

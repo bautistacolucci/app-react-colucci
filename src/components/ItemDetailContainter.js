@@ -4,29 +4,27 @@ import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
 import { collection } from "firebase/firestore";
-import { getDocs } from "firebase/firestore";
+import { getDoc, doc} from "firebase/firestore";
 
 
 
 const ItemDetailContainer = () => {
-    const [listProduct, setListProdruct] = useState({})
+    const [listProduct, setListProduct] = useState({})
     const [loading, setLoading] = useState(false)
     const {id} = useParams()
 
     useEffect (() => {
         const productsCollection = collection(db, "products")
-        const consulta = getDocs(productsCollection)
-        
+        const referencia = doc(productsCollection, id)
+        const consulta = getDoc(referencia)
+
         consulta
-        .then(snapshot=>{
-            const product = snapshot.docs.map(doc=>{
-                return{
-                    ...doc.data(),
-                    id: doc.id
-                }
-            }) 
+        .then(res=>{
             setLoading(true);
-            setListProdruct(product.find(item => item.id === id))
+            setListProduct(res.data())
+        })
+        .catch((err)=>{
+            console.log(err);
         })
         }, [id])
 

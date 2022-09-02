@@ -3,23 +3,35 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
-import { collection } from "firebase/firestore";
-import { getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 //1 me traigo la referencia de la db
 //2 me traigo una referencia de la colleccion
 //3 teniendo la colleccion, me traigo los metodos de consulta
 
 const ItemListContainer = () => {
-    const [listProducts, setListProdructs] = useState([])
+    const [listProducts, setListProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    /* const [filtro, setFiltro] = useState()
+    const [consulta, setConsulta] = useState() */
+
     const {category} = useParams()
     
     useEffect (() => {
         setLoading(false);
-
         const productsCollection = collection(db, "products")
-        const consulta = getDocs(productsCollection)
+        let filtro
+        let consulta
+
+        if (category){
+            /* setFiltro(query(productsCollection,where("category","==",category)))
+            setConsulta(getDocs(filtro)) */
+            filtro = query(productsCollection,where("category","==",category))
+            consulta = getDocs(filtro)
+        } else {
+            /* setConsulta(getDocs(productsCollection)) */
+            consulta = getDocs(productsCollection)
+        }
 
         consulta
         .then(snapshot=>{
@@ -29,14 +41,8 @@ const ItemListContainer = () => {
                     id: doc.id
                 }
             }) 
-            setListProdructs(products)
-            if (category){
-                setLoading(true)
-                setListProdructs(products.filter(prod => prod.category === category))
-            } else {
-                setLoading(true)
-                setListProdructs(products)
-            }
+            setListProducts(products)
+            setLoading(true)
         })
         .catch(err=>{
             console.log(err)

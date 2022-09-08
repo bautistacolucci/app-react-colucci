@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Item = ({product}) => {
-
+  
     return (
       <>
         <div className="card">

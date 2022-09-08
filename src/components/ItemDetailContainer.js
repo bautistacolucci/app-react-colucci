@@ -5,33 +5,35 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
 import { collection } from "firebase/firestore";
 import { getDoc, doc} from "firebase/firestore";
-
-
+import { toast } from 'react-toastify';
 
 const ItemDetailContainer = () => {
-    const [listProduct, setListProduct] = useState({})
+    const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(false)
     const {id} = useParams()
-
-    useEffect (() => {
+     useEffect (() => {
         const productsCollection = collection(db, "products")
         const referencia = doc(productsCollection, id)
         const consulta = getDoc(referencia)
 
         consulta
         .then(res=>{
+            const product =  {
+                ...res.data(),
+                id: id
+            }
             setLoading(true);
-            setListProduct(res.data())
+            setProduct(product)
         })
         .catch((err)=>{
-            console.log(err);
+            toast.error("Error al cargar los productos")
         })
-        }, [id])
+        }, [id]) 
 
     return(
         <>
         {!loading && <CircularProgress  />}
-        {loading && <ItemDetail listProduct={listProduct} />}
+        {loading && <ItemDetail product={product} />}
         </>   
     )
 }

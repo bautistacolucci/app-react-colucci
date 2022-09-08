@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { toast } from 'react-toastify';
 
 //1 me traigo la referencia de la db
 //2 me traigo una referencia de la colleccion
@@ -12,8 +13,8 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 const ItemListContainer = () => {
     const [listProducts, setListProducts] = useState([])
     const [loading, setLoading] = useState(false)
-    /* const [filtro, setFiltro] = useState()
-    const [consulta, setConsulta] = useState() */
+/*     const [useFiltro, setFiltro] = useState()
+    const [useConsulta, setConsulta] = useState() */
 
     const {category} = useParams()
     
@@ -25,17 +26,17 @@ const ItemListContainer = () => {
 
         if (category){
             /* setFiltro(query(productsCollection,where("category","==",category)))
-            setConsulta(getDocs(filtro)) */
+            setConsulta(getDocs(useFiltro)) */
             filtro = query(productsCollection,where("category","==",category))
-            consulta = getDocs(filtro)
+            consulta = getDocs(filtro) 
         } else {
             /* setConsulta(getDocs(productsCollection)) */
             consulta = getDocs(productsCollection)
         }
 
         consulta
-        .then(snapshot=>{
-            const products = snapshot.docs.map(doc=>{
+        .then(res=>{
+            const products = res.docs.map(doc=>{
                 return{
                     ...doc.data(),
                     id: doc.id
@@ -45,7 +46,7 @@ const ItemListContainer = () => {
             setLoading(true)
         })
         .catch(err=>{
-            console.log(err)
+            toast.error("Error al cargar los productos")
         })
     }, [category])
 

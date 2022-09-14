@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 const CartContext = createContext([]);
 
@@ -6,7 +6,12 @@ export const useCartContext = () => useContext(CartContext);
 
 
 export const CartContextProvider = ({children}) => {
-  const [cartList, setCartList] = useState([])
+  const initialState = () => {
+      const localData = localStorage.getItem("cart") 
+      return localData ? JSON.parse(localData) : []
+  }
+
+  const [cartList, setCartList] = useState(initialState)
 
   const isInCart = (id) => cartList.find(prod => prod.id === id)
 
@@ -26,11 +31,11 @@ export const CartContextProvider = ({children}) => {
       setCartList([...cartList, newProduct])
     }
   }
-
+  
   const removeProduct = (id) => setCartList(cartList.filter((prod) => prod.id !== id));
   
   const cleanCart = () => setCartList([]);
-
+  
   const totalPrice = () => {
     return cartList.reduce((acc, product) => acc += product.price * product.quantity, 0)
   }
@@ -38,6 +43,10 @@ export const CartContextProvider = ({children}) => {
     return cartList.reduce((acc, product) => acc += product.quantity, 0)
   }
   
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartList))
+  }, [cartList])
+
   return(
     <CartContext.Provider value={{cartList, addToCart, removeProduct, cleanCart, totalPrice, totalQuatity}}>
       {children}

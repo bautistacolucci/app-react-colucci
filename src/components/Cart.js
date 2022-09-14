@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 const Cart = () => {
     const { cartList, totalPrice, removeProduct, cleanCart } = useCartContext()
 
+    /* let cartJson = JSON.stringify(cartList)
+    localStorage.setItem("cart", cartJson) */
+
+    /* let cartGet = localStorage.getItem("cart")
+    let cartParse = JSON.parse(cartGet) */
+
     return (
         <>
         {cartList.map(prod =>
@@ -11,7 +17,7 @@ const Cart = () => {
             <img src={prod.image} alt={prod.name} />
             <h3>{prod.name}</h3>
             <p>${prod.price}</p>
-            <p>Cantidad: {prod.price}</p>
+            <p>Cantidad: {prod.quantity}</p>
             <button onClick={() => removeProduct(prod.id)}>x</button>
           </div>
         )}

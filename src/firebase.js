@@ -7,10 +7,8 @@ const firebaseConfig = {
   projectId: "kikiwai-react-app",
   storageBucket: "kikiwai-react-app.appspot.com",
   messagingSenderId: "420590312581",
-  appId: "1:420590312581:web:7d4355c6a2177e6cf75dec"
+  appId: "1:420590312581:web:7d4355c6a2177e6cf75dec",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Esta variable representa la base de datos
-export const db = getFirestore(app)
+export const db = getFirestore(app);

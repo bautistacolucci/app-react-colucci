@@ -5,10 +5,6 @@ import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { toast } from 'react-toastify';
 
-//1 me traigo la referencia de la db
-//2 me traigo una referencia de la colleccion
-//3 teniendo la colleccion, me traigo los metodos de consulta
-
 const ItemListContainer = () => {
     const [listProducts, setListProducts] = useState([])
     const [loading, setLoading] = useState(false)

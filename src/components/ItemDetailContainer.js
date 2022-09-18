@@ -1,7 +1,6 @@
 import ItemDetail from './ItemDetail'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
 import { collection } from "firebase/firestore";
 import { getDoc, doc} from "firebase/firestore";
@@ -32,7 +31,7 @@ const ItemDetailContainer = () => {
 
     return(
         <>
-        {!loading && <CircularProgress  />}
+        {!loading &&  <p>cargando</p>}
         {loading && <ItemDetail product={product} />}
         </>   
     )

@@ -1,7 +1,6 @@
 import ItemList from './ItemList'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CircularProgress from '@mui/material/CircularProgress';
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { toast } from 'react-toastify';
@@ -53,7 +52,7 @@ const ItemListContainer = () => {
     return (
         <>
         <section className='ItemListContainer'>
-            {!loading && <CircularProgress />}
+            {!loading && <p>cargando</p>}
             {loading && <ItemList listProducts={listProducts}/>}
         </section>
         </>

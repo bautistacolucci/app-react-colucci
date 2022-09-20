@@ -11,7 +11,6 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Main />
-        {/* Footer */}
         <ToastContainer />
       </BrowserRouter>
     </CartContextProvider>

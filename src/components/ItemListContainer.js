@@ -1,58 +1,74 @@
-import ItemList from './ItemList'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import ItemList from "./ItemList";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import Loader from "../utils/Loader";
 
 const ItemListContainer = () => {
-    const [listProducts, setListProducts] = useState([])
-    const [loading, setLoading] = useState(false)
-/*     const [useFiltro, setFiltro] = useState()
+  const [listProducts, setListProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  /*     const [useFiltro, setFiltro] = useState()
     const [useConsulta, setConsulta] = useState() */
 
-    const {category} = useParams()
-    
-    useEffect (() => {
-        setLoading(false);
-        const productsCollection = collection(db, "products")
-        let filtro
-        let consulta
+  const { category } = useParams();
 
-        if (category){
-            /* setFiltro(query(productsCollection,where("category","==",category)))
+  useEffect(() => {
+    setLoading(false);
+    const productsCollection = collection(db, "products");
+    let filtro;
+    let consulta;
+
+    if (category) {
+      /* setFiltro(query(productsCollection,where("category","==",category)))
             setConsulta(getDocs(useFiltro)) */
-            filtro = query(productsCollection,where("category","==",category))
-            consulta = getDocs(filtro) 
-        } else {
-            /* setConsulta(getDocs(productsCollection)) */
-            consulta = getDocs(productsCollection)
-        }
+      filtro = query(productsCollection, where("category", "==", category));
+      consulta = getDocs(filtro);
+    } else {
+      /* setConsulta(getDocs(productsCollection)) */
+      consulta = getDocs(productsCollection);
+    }
 
-        consulta
-        .then(res=>{
-            const products = res.docs.map(doc=>{
-                return{
-                    ...doc.data(),
-                    id: doc.id
-                }
-            }) 
-            setListProducts(products)
-            setLoading(true)
-        })
-        .catch(err=>{
-            toast.error("Error al cargar los productos")
-        })
-    }, [category])
+    consulta
+      .then((res) => {
+        const products = res.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
+        });
+        setListProducts(products);
+        setLoading(true);
+      })
+      .catch((err) => {
+        toast.error("Error al cargar los productos");
+      });
+  }, [category]);
 
-    return (
-        <>
-        <section className='ItemListContainer'>
-            {!loading && <p>cargando</p>}
-            {loading && <ItemList listProducts={listProducts}/>}
-        </section>
-        </>
-    )
-}
+  return (
+    <>
+      <section className="ItemListContainer">
+        {!loading && (
+          <div className="bg-white">
+            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <Loader />
+                <Loader />
+                <Loader />
+                <Loader />
+                <Loader />
+                <Loader />
+                <Loader />
+                <Loader />
+              </div>
+            </div>
+          </div>
+        )}
+        {loading && <ItemList listProducts={listProducts} />}
+      </section>
+    </>
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;

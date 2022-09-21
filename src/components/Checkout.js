@@ -94,7 +94,7 @@ const Checkout = () => {
                 Apellido
               </label>
               <input
-                onChange={handleChangeNombre}
+                onChange={handleChangeApellido}
                 type="text"
                 name="last-name"
                 id="last-name"
@@ -145,7 +145,7 @@ const Checkout = () => {
                 Celular
               </label>
               <input
-                onChange={handleChangeAdress}
+                onChange={handleChangePhone}
                 type="number"
                 name="phone"
                 id="phone"

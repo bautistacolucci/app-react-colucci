@@ -1,8 +1,5 @@
 import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const Cart = () => {
   const { cartList, totalPrice, removeProduct, cleanCart } = useCartContext();

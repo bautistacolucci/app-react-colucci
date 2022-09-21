@@ -6,8 +6,8 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Colecciones", href: "/", current: true },
-  { name: "Productos", href: "/productos", current: false },
+  { name: "Categorías", href: "/" },
+  { name: "Productos", href: "/productos" },
 ];
 
 function classNames(...classes) {
@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-100 hover:bg-neutral-100/[.2] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -35,13 +35,13 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={logo}
+                    alt="kikiwai"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={logo}
+                    alt="kikiwai"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -50,13 +50,9 @@ const Navbar = () => {
                       <Link
                         key={item.name}
                         to={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-100 hover:bg-neutral-100/[.2] hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
+                        className={
+                          "text-gray-100 hover:bg-neutral-100/[.2] hover:text-white px-3 py-2 rounded-md text-base font-medium"
+                        }
                       >
                         {item.name}
                       </Link>
@@ -67,14 +63,14 @@ const Navbar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="rounded-md p-1 text-white hover:bg-neutral-100/[.2] text-base font-bold"
                 >
                   <span className="sr-only"></span>
                   <CartWidget className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -146,13 +142,9 @@ const Navbar = () => {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "text-white"
-                      : "text-gray-300 hover:bg-cyan-100 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
+                  className={
+                    "text-gray-100 hover:bg-neutral-100/[.2] hover:text-white px-3 py-2 rounded-md text-base font-medium block"
+                  }
                 >
                   {item.name}
                 </Disclosure.Button>

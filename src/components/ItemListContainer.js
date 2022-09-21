@@ -4,13 +4,11 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { toast } from "react-toastify";
-import Loader from "../utils/Loader";
+import LoaderCard from "../utils/LoaderCard";
 
 const ItemListContainer = () => {
   const [listProducts, setListProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  /*     const [useFiltro, setFiltro] = useState()
-    const [useConsulta, setConsulta] = useState() */
 
   const { category } = useParams();
 
@@ -21,12 +19,9 @@ const ItemListContainer = () => {
     let consulta;
 
     if (category) {
-      /* setFiltro(query(productsCollection,where("category","==",category)))
-            setConsulta(getDocs(useFiltro)) */
       filtro = query(productsCollection, where("category", "==", category));
       consulta = getDocs(filtro);
     } else {
-      /* setConsulta(getDocs(productsCollection)) */
       consulta = getDocs(productsCollection);
     }
 
@@ -53,14 +48,14 @@ const ItemListContainer = () => {
           <div className="bg-white">
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                <Loader />
-                <Loader />
-                <Loader />
-                <Loader />
-                <Loader />
-                <Loader />
-                <Loader />
-                <Loader />
+                <LoaderCard prop={"card"} />
+                <LoaderCard prop={"card"}/>
+                <LoaderCard prop={"card"}/>
+                <LoaderCard prop={"card"}/>
+                <LoaderCard prop={"card"} />
+                <LoaderCard prop={"card"}/>
+                <LoaderCard prop={"card"}/>
+                <LoaderCard prop={"card"}/>
               </div>
             </div>
           </div>

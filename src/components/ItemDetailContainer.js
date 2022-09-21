@@ -6,6 +6,7 @@ import { collection } from "firebase/firestore";
 import { getDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
+
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,11 @@ const ItemDetailContainer = () => {
 
   return (
     <>
-      {!loading && <p>cargando</p>}
+      {!loading && (
+        <div className="w-6/12 mx-auto mt-8 px-auto border-gray-200 border rounded">
+             
+        </div>
+      )}
       {loading && <ItemDetail product={product} />}
     </>
   );

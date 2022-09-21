@@ -8,8 +8,8 @@ const CartWidget = () => {
     <Link to="/cart" className="inline-flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
+        width="23"
+        height="23"
         fill="currentColor"
         className=""
         viewBox="0 0 16 16"

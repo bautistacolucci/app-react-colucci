@@ -33,16 +33,20 @@ const Navbar = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src={logo}
-                    alt="kikiwai"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={logo}
-                    alt="kikiwai"
-                  />
+                  <Link to={"/"}>
+                    <img
+                      className="block h-8 w-auto lg:hidden"
+                      src={logo}
+                      alt="kikiwai"
+                    />
+                  </Link>
+                  <Link to={"/"}>
+                    <img
+                      className="hidden h-8 w-auto lg:block"
+                      src={logo}
+                      alt="kikiwai"
+                    />
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">

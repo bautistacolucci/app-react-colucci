@@ -5,7 +5,15 @@ import { db } from "../firebase";
 import { collection } from "firebase/firestore";
 import { getDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import TopBarProgress from "react-topbar-progress-indicator";
 
+TopBarProgress.config({
+  barColors: {
+    0: "#fff",
+    "1.0": "#fff",
+  },
+  shadowBlur: 5,
+});
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -32,11 +40,7 @@ const ItemDetailContainer = () => {
 
   return (
     <>
-      {!loading && (
-        <div className="w-6/12 mx-auto mt-8 px-auto border-gray-200 border rounded">
-             
-        </div>
-      )}
+      {!loading && <TopBarProgress />}
       {loading && <ItemDetail product={product} />}
     </>
   );

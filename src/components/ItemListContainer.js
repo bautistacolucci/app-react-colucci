@@ -4,8 +4,16 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { toast } from "react-toastify";
-import LoaderCard from "../utils/LoaderCard";
 
+import TopBarProgress from "react-topbar-progress-indicator";
+
+TopBarProgress.config({
+  barColors: {
+    "0": "#fff",
+    "1.0": "#fff"
+  },
+  shadowBlur: 5
+});
 const ItemListContainer = () => {
   const [listProducts, setListProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,22 +52,7 @@ const ItemListContainer = () => {
   return (
     <>
       <section className="ItemListContainer">
-        {!loading && (
-          <div className="bg-white">
-            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                <LoaderCard prop={"card"} />
-                <LoaderCard prop={"card"}/>
-                <LoaderCard prop={"card"}/>
-                <LoaderCard prop={"card"}/>
-                <LoaderCard prop={"card"} />
-                <LoaderCard prop={"card"}/>
-                <LoaderCard prop={"card"}/>
-                <LoaderCard prop={"card"}/>
-              </div>
-            </div>
-          </div>
-        )}
+        {!loading && <TopBarProgress />}
         {loading && <ItemList listProducts={listProducts} />}
       </section>
     </>

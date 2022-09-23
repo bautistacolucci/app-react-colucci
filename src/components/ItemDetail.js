@@ -13,8 +13,8 @@ const ItemDetail = ({ product }) => {
   };
 
   return (
-    <div className="w-6/12 mx-auto mt-8 p-5 border-gray-200 border rounded">
-      <img src={product.image} alt={product.name} className="mx-auto rounded" />
+    <div className="w-11/12 md:w-3/4 lg:w-6/12 mx-auto mt-8 p-5 border-gray-200 border rounded">
+      <img src={product.image} alt={product.name} className="mx-auto rounded w-3/5" />
       <div className="my-6 text-center">
         <h3 className="p-2 text-3xl font-semibold">{product.name}</h3>
         <p className="p-2"> {product.description} </p>

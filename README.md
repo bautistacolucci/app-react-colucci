@@ -7,6 +7,8 @@ Para la realización de este proyecto se utilizaron las siguientes tecnologias:
 * react-router-dom 6.3.0
 * react-toastify 9.0.8
 * react-topbar-progress-indicator 4.1.1
+## Demo
+![demo-kikiwai](https://user-images.githubusercontent.com/103048071/191883690-2e2b8f08-0b5b-47cb-9bb8-74ac9c63089f.gif)
 ## Deploy
 https://app-react-colucci-bautistacolucci.vercel.app/
 ## Instalación
@@ -15,4 +17,3 @@ git clone https://github.com/bautistacolucci/app-react-colucci
 npm install
 npm start
 ```
-## Demo

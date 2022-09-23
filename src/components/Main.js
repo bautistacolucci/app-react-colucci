@@ -3,7 +3,6 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import Cart from "./Cart";
 import Home from "./Home";
 import Checkout from "./Checkout";
-
 import { Routes, Route } from "react-router-dom";
 
 const Main = () => {

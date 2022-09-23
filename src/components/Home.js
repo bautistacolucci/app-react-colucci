@@ -3,9 +3,6 @@ import tablas2 from "../assets/tablas2.jpg";
 import neoprene from "../assets/neoprene.jpg";
 import accesorio1 from "../assets/accesorio1.jpg";
 
-
-
-
 const Home = () => {
   return (
     <div className="bg-gray-100">
